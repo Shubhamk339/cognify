@@ -1,0 +1,12 @@
+import time
+
+def reverse_string_with_animation(input_string):
+    for char in reversed(input_string):
+        print(char, end='', flush=True)
+        time.sleep(0.3)  # Adjust the delay as needed
+    print()  # Print a newline at the end
+
+# Example usage:
+input_string = input("Enter a string: ")
+print("Reversing the Word:")
+reverse_string_with_animation(input_string)
