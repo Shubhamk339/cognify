@@ -1,0 +1,32 @@
+def count_word_occurrences(file_name):
+    word_counts = {}
+    
+    # Read the file and count occurrences of each word
+    with open(file_name, 'r') as file:
+        for line in file:
+            words = line.strip().split()
+            for word in words:
+                # Remove punctuation and convert to lowercase for consistency
+                word = word.strip(".,!?").lower()
+                if word in word_counts:
+                    word_counts[word] += 1
+                else:
+                    word_counts[word] = 1
+    
+    return word_counts
+
+def display_word_counts(word_counts):
+    # Sort the word counts alphabetically by word
+    sorted_word_counts = sorted(word_counts.items(), key=lambda x: x[0])
+    
+    # Display the results
+    for word, count in sorted_word_counts:
+        print(f"{word}: {count}")
+
+# Example usage:
+file_name = input("Enter the name of the text file: ")
+try:
+    word_counts = count_word_occurrences(file_name)
+    display_word_counts(word_counts)
+except FileNotFoundError:
+    print("File not found. Please make sure the file exists and try again.")
