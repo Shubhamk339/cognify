@@ -1,0 +1,36 @@
+import random
+
+def play_guessing_game():
+    lower = int(input("Enter the lower bound of the range: "))
+    upper = int(input("Enter the upper bound of the range: "))
+    number_of_chances = int(input("Enter the number of chances: "))
+    target_number = random.randint(lower, upper)
+    attempts = 0
+    
+    while attempts < number_of_chances:
+        guess = input("Guess the number: ")
+        if guess.isdigit():
+            guess = int(guess)
+            if guess == target_number:
+                print("Congratulations! You got it!")
+                return
+            elif guess < target_number:
+                print("Too low!")
+            else:
+                print("Too high!")
+            attempts += 1
+        elif guess == "":
+            print("You didn't enter anything. Please guess a number.")
+        elif guess == "backspace":
+            attempts -= 1
+            print("You have removed your last guess.")
+        else:
+            print("Invalid input. Please enter a number.")
+
+    print("You're out of chances! The correct number was:", target_number)
+
+while True:
+    play_guessing_game()
+    choice = input("Would you like to play again? (yes/no): ").lower()
+    if choice != 'yes':
+        break
