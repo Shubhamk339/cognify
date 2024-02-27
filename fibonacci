@@ -1,0 +1,25 @@
+def generate_fibonacci_sequence(num_terms):
+    fibonacci_sequence = [0, 1]  # Initialize with the first two Fibonacci numbers
+    
+    # Generate Fibonacci sequence up to the specified number of terms
+    while len(fibonacci_sequence) < num_terms:
+        next_term = fibonacci_sequence[-1] + fibonacci_sequence[-2]
+        fibonacci_sequence.append(next_term)
+    
+    return fibonacci_sequence
+
+# Function to get user input and display Fibonacci sequence
+def display_fibonacci_sequence():
+    num_terms = int(input("Enter the number of terms for the Fibonacci sequence: "))
+    
+    # Check if input is valid
+    if num_terms <= 0:
+        print("Please enter a positive integer.")
+        return
+    
+    fibonacci_sequence = generate_fibonacci_sequence(num_terms)
+    print("Fibonacci sequence up to", num_terms, "terms:")
+    print(fibonacci_sequence)
+
+# Example usage:
+display_fibonacci_sequence()
