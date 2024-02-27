@@ -1,0 +1,31 @@
+import string
+
+def evaluate_password_strength(password):
+    # Length check
+    if len(password) < 8:
+        return "Weak: Password should be at least 8 characters long."
+    
+    # Check for presence of uppercase letters
+    if not any(char.isupper() for char in password):
+        return "Weak: Password should contain at least one uppercase letter."
+    
+    # Check for presence of lowercase letters
+    if not any(char.islower() for char in password):
+        return "Weak: Password should contain at least one lowercase letter."
+    
+    # Check for presence of digits
+    if not any(char.isdigit() for char in password):
+        return "Weak: Password should contain at least one digit."
+    
+    # Check for presence of special characters
+    special_characters = set(string.punctuation)
+    if not any(char in special_characters for char in password):
+        return "Weak: Password should contain at least one special character."
+    
+    # If all checks pass, password is considered strong
+    return "Strong: Password meets all strength criteria."
+
+# Example usage:
+password = input("Enter your password: ")
+strength = evaluate_password_strength(password)
+print(strength)
